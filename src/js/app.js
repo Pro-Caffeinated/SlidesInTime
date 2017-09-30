@@ -21,8 +21,6 @@ class App extends Component{
 			<div className={'MainApp ' + bgTheme}>
 				<div className={'SlideView ' + this.state['theme']}>
 					<div className={'SlideContent ' + this.state['theme']}>
-					<h1>Heading</h1>
-					Body
 					</div>
 				</div>
 			</div>
