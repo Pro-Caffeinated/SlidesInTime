@@ -4,3 +4,4 @@ npm-debug.log
 dist
 package-lock.json
 SlidesInTime-3c8e7f7c0d3a.json
+.env
