@@ -11,7 +11,7 @@ const Templates = [<ImageList/>, <ImageView/>, <ListView/>, <QuoteView/>, <Title
 class App extends Component{
 	constructor(props) {
 		super(props);
-		this.state = {'template': Templates[4], 'theme': 'yellow'};
+		this.state = {'template': Templates[4], 'theme': 'dark'};
 	}
 
 	render() {
@@ -23,7 +23,7 @@ class App extends Component{
 			<div className={'MainApp ' + bgTheme}>
 				<div className={'SlideView ' + this.state['theme']}>
 					<div className={'SlideContent ' + this.state['theme']}>
-						{this.state['template']}
+						{this.props.children}
 					</div>
 				</div>
 			</div>

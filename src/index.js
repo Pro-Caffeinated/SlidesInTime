@@ -1,11 +1,23 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Router, Route, hashHistory } from 'react-router';
-import App from './js/app.js';
-import './css/style.css';
-
-render(
-  <Router history={hashHistory}>
-    <Route path="/" component={App} />
-  </Router>, document.getElementById('root')
-);
+import ReactDOM from 'react-dom';
+import { Router, Route, IndexRoute, browserHistory} from "react-router"
+import App from './js/app';
+import Start from './js/start';
+import ImageList from './js/imageList';
+import ImageView from './js/imageView';
+import ListView from './js/listView';
+import QuoteView from './js/quoteView';
+import TitleView from './js/titleView';
+const root = document.getElementById('root')
+ReactDOM.render(
+	<Router history={browserHistory}>
+		<Route path="/slides" component={App}>
+			<IndexRoute component={ImageList}></IndexRoute>
+			<Route path="imageList" component={ImageList}></Route>
+			<Route path="imageView" component={ImageView}></Route>
+			<Route path="listView" component={ListView}></Route>
+			<Route path="quoteView" component={QuoteView}></Route>
+		</Route>
+		<Route path="/" component={Start}></Route>
+	</Router>, 
+root);
