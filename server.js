@@ -3,7 +3,8 @@ var webpack = require('webpack');
 var express = require('express');
 var config = require('./webpack.config');
 const io = require('socket.io')();
-
+var dotenv = require('dotenv')
+dotenv.load()
 var app = express();
 var compiler = webpack(config);
 
@@ -23,6 +24,20 @@ app.listen(3000, function(err) {
   }
 
   console.log('Listening at http://localhost:3000/');
+});
+
+/**********************************************************************/
+
+var Bing = require('node-bing-api')({ accKey: process.env.BING_SEARCH_KEY });
+var util = require('util'),
+  Bing = require('node-bing-api')({ accKey: process.env.BING_SEARCH_KEY }),
+  searchBing = util.promisify(Bing.web.bind(Bing));
+
+Bing.images("Ninja Turtles"
+          , {count: 5, market: 'es-ES'}
+          , function(error, res, body){
+ 
+  console.log(body.value[0].contentUrl);
 });
 
 /**********************************************************************/
@@ -57,7 +72,7 @@ const request = {
 
 var apiai = require('apiai');
  
-var app = apiai('<api key>');
+var app = apiai(process.env.API_AI_KEY);
  
 var so = null;
 
