@@ -49,9 +49,9 @@
   "dependencies": {
     "@google-cloud/speech": "^0.10.3",
     "node-record-lpcm16": "^0.3.0",
-    "react": "^15.0.2",
-    "react-dom": "^0.14.6",
-    "react-router": "^4.2.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.4.1",
     "url-loader": "^0.5.9"
   }
 }
