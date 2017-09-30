@@ -53,11 +53,32 @@ const request = {
   interimResults: false // If you want interim results, set this to true
 };
 
+/**********************************************************************/
+
+var apiai = require('apiai');
+ 
+var app = apiai('<api key>');
+ 
 var so = null;
 
 function display(log) {
   try{
   	so.emit('speech', log.alternatives[0].transcript);
+    var request = app.textRequest(log.alternatives[0].transcript, {
+      sessionId: Math.floor(Math.random()*10e5)
+    });
+     
+    request.on('response', function(response) {
+        if (response.result.hasOwnProperty('fulfillment')){
+        console.log(response.result.fulfillment.speech);
+      }
+    });
+     
+    request.on('error', function(error) {
+        console.log(error);
+    });
+     
+    request.end();
   }
   catch(e) {
       console.log(e.error);
