@@ -1,0 +1,32 @@
+html, body{
+  height:100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.MainApp {
+	height: 100vh;
+	background-size: cover;
+}
+
+.SlideView {
+	top: 5%;
+	height: 90%;
+	width: 95%;
+	margin: auto;
+	position: relative;
+	box-shadow: 0 5px 8px rgba(0,0,0,0.12), 0 5px 7px rgba(0,0,0,0.24);
+}
+
+.dark{
+	background-color: #455062;
+	color: #F3F3F3;
+}
+
+.light{
+	background-color: #F3F3F3;
+	color: #455062;
+}

@@ -1,9 +1,31 @@
 import React, { Component } from 'react';
+import ImageList from './imageList.js';
+import ImageView from './imageView.js';
+import ListView from './listView.js';
+import QuoteView from './quoteView.js';
+import TitleView from './titleView.js';
+import '../css/style.css';
 
-export default class App extends Component {
-  render() {
-    return (
-      <h1>Hello, abc.</h1>
-    );
-  }
+class App extends Component{
+	constructor(props) {
+		super(props);
+		this.state = {'template': TitleView, 'theme': 'dark'};
+	}
+
+	render() {
+		let bgTheme = 'dark';
+		if (this.state['theme'] == 'dark'){
+			bgTheme = 'light'
+		}
+		return (
+			<div className={'MainApp ' + bgTheme}>
+				<div className={'SlideView ' + this.state['theme']}>
+					<div className={'SlideContent ' + this.state['theme']}>
+					</div>
+				</div>
+			</div>
+		)
+	}
 }
+
+export default App;
