@@ -100,10 +100,11 @@ function display(log) {
     request.on('response', function(response) {
       if (response.result.fulfillment.speech != ''){
         if (response.result.fulfillment.speech == 'image'){
+          let src = null;
           Bing.images(response.result.parameters.objec
                       , {count: 5, market: 'es-ES'}
                       , function(error, res, body){
-                          var src = body.value[0].contentUrl;
+                          src = body.value[0].contentUrl;
           });
           so.emit('image', src);
           if (response.context.hasOwnProperty('name')){
