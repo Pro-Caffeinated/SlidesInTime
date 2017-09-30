@@ -92,8 +92,7 @@ var so = null;
 /*******************************************************************/
 
 function display(log) {
-  try{
-  	
+  try{  	
     var request = app.textRequest(log.alternatives[0].transcript, {
       sessionId: Math.floor(Math.random()*10e5)
     });
@@ -108,17 +107,21 @@ function display(log) {
           });
           so.emit('image', src);
           if (response.context.hasOwnProperty('name')){
+            console.log('imageList');
             so.emit('template', 'imageList');
           }
           else {
+            console.log(response.result.fulfillment.speech);
             so.emit('template', response.result.fulfillment.speech);
           }
         }
         else{
+          console.log(response.result.fulfillment.speech);
           so.emit('template', response.result.fulfillment.speech);
         }
       }
       else {
+          console.log(log.alternatives[0].transcript);
           so.emit('speech', log.alternatives[0].transcript);
       }
     });
