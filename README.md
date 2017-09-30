@@ -5,4 +5,4 @@
 * [ ] NLP Parse - API.ai
 * [x] Google Cloud Speech API
 * [ ] Google Custom Search API
-* [ ] Dark/Light Theme
+* [x] Dark/Light Theme
