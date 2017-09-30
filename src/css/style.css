@@ -43,6 +43,7 @@ h3 {
 }
 
 .SlideContent {
+	background: transparent !important; 
 	top: 5%;
 	height: 90%;
 	width: 95%;
@@ -118,4 +119,28 @@ h3 {
 .light{
 	background-color: #F3F3F3;
 	color: #112236;
+}
+
+.yellow{
+	background-image: url("../assets/bg1.png");
+	color: black;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.blue{
+	background-image: url("../assets/bg2.png");
+	color: white;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.black{
+	background-image: url("../assets/bg3.png");
+	color: white;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }

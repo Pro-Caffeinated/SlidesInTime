@@ -11,12 +11,12 @@ const Templates = [<ImageList/>, <ImageView/>, <ListView/>, <QuoteView/>, <Title
 class App extends Component{
 	constructor(props) {
 		super(props);
-		this.state = {'template': Templates[0], 'theme': 'light'};
+		this.state = {'template': Templates[4], 'theme': 'yellow'};
 	}
 
 	render() {
 		let bgTheme = 'dark';
-		if (this.state['theme'] == 'dark'){
+		if (this.state['theme'] == 'dark' || this.state['theme'] == 'blue' || this.state['theme'] == 'black'){
 			bgTheme = 'light'
 		}
 		return (

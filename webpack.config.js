@@ -26,6 +26,11 @@ module.exports = {
       test: /\.css$/,
       loaders: ['style-loader', 'css-loader?importLoaders=1'],
       exclude: ['node_modules']
-    },]
+    },
+    {
+    test: /\.png$/,
+    loader: "url-loader",
+    query: { mimetype: "image/png" }
+    }]
   }
 };
