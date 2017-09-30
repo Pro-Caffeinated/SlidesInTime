@@ -58,4 +58,5 @@ class ListViewStore extends EventEmitter{
 
 const listViewStore = new ListViewStore;
 dispatcher.register(listViewStore.handleActions.bind(listViewStore))
+window.dispatcher = dispatcher
 export default listViewStore;

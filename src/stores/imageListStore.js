@@ -34,7 +34,7 @@ class ImageListStore extends EventEmitter{
 	clearContent(){
 		this.content.title = '';
 		this.content.items = []
-		this.content.src = ''
+		this.content.src = null
 		this.emit('change')
 	}
 

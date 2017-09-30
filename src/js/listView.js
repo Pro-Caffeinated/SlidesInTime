@@ -17,8 +17,8 @@ class ListView extends Component{
 		})
 	}
 	renderList() {
-		return this.state.content.items.map(item => (
-		    <li key={item} name={item}>{item}</li>
+		return this.state.content.items.map((item, i) => (
+		    <li key={i} name={item}>{item}</li>
 		  ));
 	}
 
