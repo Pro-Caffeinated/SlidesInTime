@@ -33,6 +33,22 @@ h3 {
 	height: 100vh;
 }
 
+.StartPage {
+	height: 100vh;
+}
+
+.StartPage > .SlideView > .SlideContent > .TitleView > a{
+	margin-left: 1%;
+}
+
+.StartPage > .SlideView > .SlideContent > .TitleView{
+	top: 15%;
+}
+
+.themeSelect {
+	margin-left: 1%;
+}
+
 .SlideView {
 	top: 5%;
 	height: 90%;
@@ -44,9 +60,9 @@ h3 {
 
 .SlideContent {
 	background: transparent !important; 
-	top: 5%;
-	height: 90%;
-	width: 95%;
+	top: 10%;
+	height: 80%;
+	width: 85%;
 	margin: auto;
 	position: relative;
 }
@@ -116,9 +132,17 @@ h3 {
 	color: #F3F3F3;
 }
 
+.dark > * > hr{
+	border-top: 1px solid #F3F3F3;
+}
+
 .light{
 	background-color: #F3F3F3;
 	color: #112236;
+}
+
+.light > * > hr{
+	border-top: 1px solid #112236;
 }
 
 .yellow{
@@ -129,6 +153,10 @@ h3 {
     background-size: 100% 100%;
 }
 
+.yellow > * > hr{
+	border-top: 1px solid black;
+}
+
 .blue{
 	background-image: url("../assets/bg2.png");
 	color: white;
@@ -137,10 +165,18 @@ h3 {
     background-size: 100% 100%;
 }
 
+.blue > * > hr{
+	border-top: 1px solid white;
+}
+
 .black{
 	background-image: url("../assets/bg3.png");
 	color: white;
 	background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+}
+
+.black > * > hr{
+	border-top: 1px solid white;
 }
