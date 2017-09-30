@@ -51,5 +51,4 @@ class ImageViewStore extends EventEmitter{
 
 const imageViewStore = new ImageViewStore;
 dispatcher.register(imageViewStore.handleActions.bind(imageViewStore))
-window.dispatcher = dispatcher
 export default imageViewStore;
