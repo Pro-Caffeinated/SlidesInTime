@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class ListView extends Component{
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = {'title': 'Enter title here', 
 					  'items': ['Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 					  			'Fusce rutrum lectus non tortor fringilla molestie.']};

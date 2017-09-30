@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class TitleView extends Component{
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = {'title': 'Enter title here', 'subTitle': 'Enter subtitle here'};
 	}
 

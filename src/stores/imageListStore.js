@@ -1,5 +1,7 @@
 import { EventEmitter } from 'events';
 
+import dispatcher from "../dispatcher"
+
 class ImageListStore extends EventEmitter{
 	constructor(){
 		super()
@@ -19,7 +21,16 @@ class ImageListStore extends EventEmitter{
 		this.content.src = src
 		this.emit("change")
 	}
+	handleActions(action){
+		// console.log("ImageListStore received an action", action)
+		switch(action.type){
+			case "CREATE_IMAGELIST":{
+				this.createContent(action.content.title, action.content.list, action.content.src)
+			}
+		}
+	}
 } 
 
 const imageListStore = new ImageListStore;
+dispatcher.register(imageListStore.handleActions.bind(imageListStore))
 export default imageListStore;

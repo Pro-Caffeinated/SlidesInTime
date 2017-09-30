@@ -14,11 +14,11 @@ const root = document.getElementById('root')
 ReactDOM.render(
 	<Router history={browserHistory}>
 		<Route name="slides" path="/slides/:theme" component={App}>
-			<IndexRoute component={ImageList}></IndexRoute>
+			<IndexRoute component={TitleView}></IndexRoute>
 			<Route name="imageList" path="imageList" component={ImageList}></Route>
-			<Route path="imageView" component={ImageView}></Route>
-			<Route path="listView" component={ListView}></Route>
-			<Route path="quoteView" component={QuoteView}></Route>
+			<Route name="imageView" path="imageView" component={ImageView}></Route>
+			<Route name="listView" path="listView" component={ListView}></Route>
+			<Route name="quoteView" path="quoteView" component={QuoteView}></Route>
 		</Route>
 		<Route path="/" component={Start}></Route>
 	</Router>, 

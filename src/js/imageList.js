@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ImageListStore from "../stores/imageListStore";
+import * as ImageListAction from "../actions/imageListAction"
 class ImageList extends Component{
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state={
 			content: ImageListStore.getContent()
 		};
@@ -14,6 +15,11 @@ class ImageList extends Component{
 			})
 		})
 	}
+	create(){
+		ImageListAction.createImageList({title:"Current Time",
+										list:[Date.now(), Date.now()],
+										src:"https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/DatesAndTimes/Art/iCal.png"})
+	}
 	renderList() {
 		return this.state.content.items.map(item => (
 		    <li key={item} name={item}>{item}</li>
@@ -24,6 +30,7 @@ class ImageList extends Component{
 		const { content } = this.state;
 		return (
 			<div className='ImageList'>
+				<button onClick={this.create.bind(this)}>Create!</button>
 				<h2>{content["title"]}</h2>
 				<hr/>
 				<div className="TwoColumn">

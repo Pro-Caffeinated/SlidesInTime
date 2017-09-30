@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class ImageView extends Component{
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 		this.state = {'title': 'Enter title here', 'src': 'http://via.placeholder.com/1920x1080'};
 	}
 
