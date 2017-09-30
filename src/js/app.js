@@ -6,10 +6,12 @@ import QuoteView from './quoteView.js';
 import TitleView from './titleView.js';
 import '../css/style.css';
 
+const Templates = [<ImageList/>, <ImageView/>, <ListView/>, <QuoteView/>, <TitleView/>]
+
 class App extends Component{
 	constructor(props) {
 		super(props);
-		this.state = {'template': TitleView, 'theme': 'light'};
+		this.state = {'template': Templates[0], 'theme': 'light'};
 	}
 
 	render() {
@@ -21,6 +23,7 @@ class App extends Component{
 			<div className={'MainApp ' + bgTheme}>
 				<div className={'SlideView ' + this.state['theme']}>
 					<div className={'SlideContent ' + this.state['theme']}>
+						{this.state['template']}
 					</div>
 				</div>
 			</div>

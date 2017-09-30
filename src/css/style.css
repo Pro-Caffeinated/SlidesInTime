@@ -13,7 +13,20 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Raleway', sans-serif;
     font-weight: 100;
-    font-size: 1.5em;
+    margin: 0px;
+    padding: 1%;
+}
+
+h1 {
+	font-size: 3em;
+}
+
+h2 {
+	font-size: 2em;
+}
+
+h3 {
+	font-size: 1.5em;
 }
 
 .MainApp {
@@ -35,6 +48,66 @@ h1, h2, h3, h4, h5, h6 {
 	width: 95%;
 	margin: auto;
 	position: relative;
+}
+
+.TitleView {
+	top: 40%;
+	position: relative;
+}
+
+.QuoteView {
+	top: 20%;
+	margin: auto;
+	text-align: center;
+	position: relative;
+}
+
+.QuoteView > h3 {
+	font-style: italic;
+}
+
+.ImageView {
+	text-align: center;
+}
+
+.ImageView > h2 {
+	text-align: left;
+}
+
+.ImageView > img {
+	max-width: 60%;
+}
+
+.ListView > ul > li {
+	margin-bottom: 25px;
+}
+
+.ImageList {
+	height: 100%;
+}
+
+.ImageList > .TwoColumn{
+	display: flex;
+	width: 100%;
+}
+
+.ImageList > .TwoColumn >.ColumnLeft {
+	width: 50%;
+	float: left;
+}
+
+.ImageList > .TwoColumn >.ColumnLeft > ul > li {
+	margin-bottom: 25px;
+}
+
+.ImageList > .TwoColumn >.ColumnRight {
+	width: 50%;
+	float: right;
+	text-align: center;
+}
+
+.ImageList > .TwoColumn > .ColumnRight > img {
+	max-width: 90%;
 }
 
 .dark{
