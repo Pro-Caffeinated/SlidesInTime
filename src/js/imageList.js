@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import ImageListStore from "../stores/imageListStore";
-import * as ImageListAction from "../actions/imageListAction"
+import ImageListStore from '../stores/imageListStore';
+import * as ImageListAction from '../actions/imageListAction'
+
 class ImageList extends Component{
 	constructor() {
 		super();
@@ -9,16 +10,16 @@ class ImageList extends Component{
 		};
 	}
 	componentWillMount(){
-		ImageListStore.on("change", () =>{
+		ImageListStore.on('change', () =>{
 			this.setState({
 				content: ImageListStore.getContent()
 			})
 		})
 	}
 	create(){
-		ImageListAction.createImageList({title:"Current Time",
+		ImageListAction.createImageList({title:'Current Time',
 										list:[Date.now(), Date.now()],
-										src:"https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/DatesAndTimes/Art/iCal.png"})
+										src:'https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/DatesAndTimes/Art/iCal.png'})
 	}
 	renderList() {
 		return this.state.content.items.map(item => (
@@ -31,9 +32,9 @@ class ImageList extends Component{
 		return (
 			<div className='ImageList'>
 				<button onClick={this.create.bind(this)}>Create!</button>
-				<h2>{content["title"]}</h2>
+				<h2>{content['title']}</h2>
 				<hr/>
-				<div className="TwoColumn">
+				<div className='TwoColumn'>
 					<div className='ColumnLeft'>
 						<ul>
 							{this.renderList()}
