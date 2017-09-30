@@ -9,7 +9,7 @@ import '../css/style.css';
 class App extends Component{
 	constructor(props) {
 		super(props);
-		this.state = {'template': TitleView, 'theme': 'dark'};
+		this.state = {'template': TitleView, 'theme': 'light'};
 	}
 
 	render() {
@@ -21,6 +21,8 @@ class App extends Component{
 			<div className={'MainApp ' + bgTheme}>
 				<div className={'SlideView ' + this.state['theme']}>
 					<div className={'SlideContent ' + this.state['theme']}>
+					<h1>Heading</h1>
+					Body
 					</div>
 				</div>
 			</div>
