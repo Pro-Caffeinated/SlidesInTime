@@ -57,10 +57,10 @@ var so = null;
 
 function display(log) {
   try{
-  	so.emit('news', log.alternatives[0].transcript);
+  	so.emit('speech', log.alternatives[0].transcript);
   }
   catch(e) {
-      so.emit('news', '\n');
+      console.log(e.error);
   }
 }
 

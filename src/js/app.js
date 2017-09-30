@@ -14,12 +14,12 @@ const socket = socketIOClient('http://localhost:8000');
 class App extends Component{
 	constructor(props) {
 		super(props);
-		socket.on('news', (payload) => {   
-	      this.updateCodeFromSockets(payload);
+		socket.on('speech', (payload) => {   
+	      this.updateSpeechFromSockets(payload);
 	    });
 	}
 
-	updateCodeFromSockets(payload) {
+	updateSpeechFromSockets(payload) {
 	    Actions.createTitle({title: payload})
 	}
 
