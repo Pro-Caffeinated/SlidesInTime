@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 
-import dispatcher from "../dispatcher"
+import dispatcher from '../dispatcher'
 
 class ImageListStore extends EventEmitter{
 	constructor(){
@@ -20,51 +20,50 @@ class ImageListStore extends EventEmitter{
 		this.content.title = title;
 		this.content.items = list
 		this.content.src = src
-		this.emit("change")
+		this.emit('change')
 	}
 
 	createTitle(title){
-		// console.log(title)
 		this.content.title = title;
-		this.emit("change")
+		this.emit('change')
 	}
 
 	updateList(item){
 		this.content.items.push(item)
-		this.emit("change")
+		this.emit('change')
 	}
 
 	createImage(src){
 		this.content.src = src
-		this.emit("change")
+		this.emit('change')
 	}
 
 	clearContent(){
-		this.content.title = "";
+		this.content.title = '';
 		this.content.items = []
-		this.content.src = ""
-		this.emit("change")
+		this.content.src = ''
+		this.emit('change')
 	}
 
 	handleActions(action){
-		// console.log("ImageListStore received an action", action)
+		// console.log('ImageListStore received an action', action)
 		switch(action.type){
-			case "CREATE_TITLE":{
+			case 'CREATE_TITLE':{
 				this.createTitle(action.content.title)
 				break;
 			}
 			
-			case "CREATE_IMAGE":{
+			case 'CREATE_IMAGE':{
 				this.createImage(action.content.src)
 				break;
 			}
 
-			case "UPDATE_LIST":{
+			case 'UPDATE_LIST':{
 				this.updateList(action.content.item)
 				break;
 			}
 
-			case "CLEAR_CONTENT":{
+			case 'CLEAR_CONTENT':{
 				this.clearContent()
 				break;
 			}
