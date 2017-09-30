@@ -16,13 +16,6 @@ class ImageListStore extends EventEmitter{
 		return this.content;
 	}
 
-	createContent(title,list,src){
-		this.content.title = title;
-		this.content.items = list
-		this.content.src = src
-		this.emit('change')
-	}
-
 	createTitle(title){
 		this.content.title = title;
 		this.emit('change')

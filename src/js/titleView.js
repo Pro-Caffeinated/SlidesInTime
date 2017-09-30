@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
+import TitleViewStore from '../stores/titleViewStore';
+import * as Actions from '../actions'
 
 class TitleView extends Component{
 	constructor() {
 		super();
-		this.state = {'title': 'Enter title here', 'subTitle': 'Enter subtitle here'};
+		this.state={
+			content: TitleViewStore.getContent()
+		};
+	}
+
+	componentWillMount(){
+		TitleViewStore.on('change', () =>{
+			this.setState({
+				content: TitleViewStore.getContent()
+			})
+		})
 	}
 
 	render() {
+		const { content } = this.state;
 		return (
 			<div className='TitleView'>
-				<h1>{this.state['title']}</h1>
-				<h3>{this.state['subTitle']}</h3>
+				<h1>{content['title']}</h1>
+				<h3>{content['subTitle']}</h3>
 			</div>
 		)
 	}

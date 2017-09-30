@@ -18,7 +18,6 @@ class ImageList extends Component{
 	}
 
 	renderList() {
-		// console.log(this.state.content)
 		return this.state.content.items.map(item => (
 		    <li key={item} name={item}>{item}</li>
 		  ));
