@@ -1,8 +1,8 @@
 # SUTD_WTH
 ## TO DO:
-* [ ] Templates x 4
-* [ ] Cards.css
+* [x] Templates x 5
+* [x] Cards.css
 * [ ] NLP Parse - API.ai
-* [ ] Google Cloud Speech API
+* [x] Google Cloud Speech API
 * [ ] Google Custom Search API
 * [ ] Dark/Light Theme
