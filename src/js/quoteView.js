@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FaQuoteRight from 'react-icons/lib/fa/quote-right';
+import FaQuoteLeft from 'react-icons/lib/fa/quote-left';
 
 class QuoteView extends Component{
 	constructor(props) {
@@ -10,7 +10,7 @@ class QuoteView extends Component{
 	render() {
 		return (
 			<div className='QuoteView'>
-				<h3><FaQuoteRight/></h3>
+				<h3><FaQuoteLeft/></h3>
 				<h3>{this.state['quote']}</h3>
 			</div>
 		)
