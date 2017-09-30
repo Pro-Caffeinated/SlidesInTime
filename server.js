@@ -106,23 +106,24 @@ function display(log) {
                       , function(error, res, body){
                           src = body.value[0].contentUrl;
           });
+          console.log('image', src)
           so.emit('image', src);
-          if (response.context.hasOwnProperty('name')){
-            console.log('imageList');
+          if (response.result.contexts.hasOwnProperty('name')){
+            console.log('template', 'imageList');
             so.emit('template', 'imageList');
           }
           else {
-            console.log(response.result.fulfillment.speech);
+            console.log('template', response.result.fulfillment.speech);
             so.emit('template', response.result.fulfillment.speech);
           }
         }
         else{
-          console.log(response.result.fulfillment.speech);
+          console.log('template', response.result.fulfillment.speech);
           so.emit('template', response.result.fulfillment.speech);
         }
       }
       else {
-          console.log(log.alternatives[0].transcript);
+          console.log('speech', log.alternatives[0].transcript);
           so.emit('speech', log.alternatives[0].transcript);
       }
     });
