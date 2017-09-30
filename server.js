@@ -26,21 +26,14 @@ app.listen(3000, function(err) {
   console.log('Listening at http://localhost:3000/');
 });
 
-/**********************************************************************/
+/********************** Bing API Setup ******************************/
 
 var Bing = require('node-bing-api')({ accKey: process.env.BING_SEARCH_KEY });
 var util = require('util'),
   Bing = require('node-bing-api')({ accKey: process.env.BING_SEARCH_KEY }),
   searchBing = util.promisify(Bing.web.bind(Bing));
 
-Bing.images("Ninja Turtles"
-          , {count: 5, market: 'es-ES'}
-          , function(error, res, body){
- 
-  console.log(body.value[0].contentUrl);
-});
-
-/**********************************************************************/
+/********************** Cloud Speech API Setup ******************************/
 
 const record = require('node-record-lpcm16');
 
@@ -68,38 +61,6 @@ const request = {
   interimResults: false // If you want interim results, set this to true
 };
 
-/**********************************************************************/
-
-var apiai = require('apiai');
- 
-var app = apiai(process.env.API_AI_KEY);
- 
-var so = null;
-
-function display(log) {
-  try{
-  	so.emit('speech', log.alternatives[0].transcript);
-    var request = app.textRequest(log.alternatives[0].transcript, {
-      sessionId: Math.floor(Math.random()*10e5)
-    });
-     
-    request.on('response', function(response) {
-        if (response.result.hasOwnProperty('fulfillment')){
-        console.log(response.result.fulfillment.speech);
-      }
-    });
-     
-    request.on('error', function(error) {
-        console.log(error);
-    });
-     
-    request.end();
-  }
-  catch(e) {
-      console.log(e.error);
-  }
-}
-
 // Create a recognize stream
 
 function speechRec(){
@@ -113,11 +74,64 @@ function speechRec(){
         threshold: 0,
         // Other options, see https://www.npmjs.com/package/node-record-lpcm16#options
         verbose: false,
-        recordProgram: 'rec', // Try also "arecord" or "sox"
+        recordProgram: 'rec', // Try also 'arecord' or 'sox'
         silence: '100.0'
       })
       .on('error', console.error)
       .pipe(recognizeStream);
+}
+
+/********************** API AI Setup ******************************/
+
+var apiai = require('apiai');
+ 
+var app = apiai(process.env.API_AI_KEY);
+ 
+var so = null;
+
+/*******************************************************************/
+
+function display(log) {
+  try{
+  	
+    var request = app.textRequest(log.alternatives[0].transcript, {
+      sessionId: Math.floor(Math.random()*10e5)
+    });
+     
+    request.on('response', function(response) {
+      if (response.result.fulfillment.speech != ''){
+        if (response.result.fulfillment.speech == 'image'){
+          Bing.images(response.result.parameters.objec
+                      , {count: 5, market: 'es-ES'}
+                      , function(error, res, body){
+                          var src = body.value[0].contentUrl;
+          });
+          so.emit('image', src);
+          if (response.context.hasOwnProperty('name')){
+            so.emit('template', 'imageList');
+          }
+          else {
+            so.emit('template', response.result.fulfillment.speech);
+          }
+        }
+        else{
+          so.emit('template', response.result.fulfillment.speech);
+        }
+      }
+      else {
+          so.emit('speech', log.alternatives[0].transcript);
+      }
+    });
+     
+    request.on('error', function(error) {
+        console.log(error);
+    });
+     
+    request.end();
+  }
+  catch(e) {
+      console.log(e.error);
+  }
 }
 
 function timeout() {
