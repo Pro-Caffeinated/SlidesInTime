@@ -1,6 +1,7 @@
 import dispatcher from './dispatcher';
 
 export function createTitle(content){
+	console.log('def', content)
 	dispatcher.dispatch({
 		type: 'CREATE_TITLE',
 		content: content.title,

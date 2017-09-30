@@ -41,17 +41,17 @@ class ImageListStore extends EventEmitter{
 	handleActions(action){
 		switch(action.type){
 			case 'CREATE_TITLE':{
-				this.createTitle(action.content.title)
+				this.createTitle(action.content)
 				break;
 			}
 			
 			case 'CREATE_IMAGE':{
-				this.createImage(action.content.src)
+				this.createImage(action.content)
 				break;
 			}
 
 			case 'UPDATE_LIST':{
-				this.updateList(action.content.item)
+				this.updateList(action.content)
 				break;
 			}
 

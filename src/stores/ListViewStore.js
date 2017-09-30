@@ -39,12 +39,12 @@ class ListViewStore extends EventEmitter{
 	handleActions(action){
 		switch(action.type){
 			case 'CREATE_TITLE':{
-				this.createTitle(action.content.title)
+				this.createTitle(action.content)
 				break;
 			}
 
 			case 'UPDATE_LIST':{
-				this.updateList(action.content.item)
+				this.updateList(action.content)
 				break;
 			}
 
