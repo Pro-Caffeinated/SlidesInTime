@@ -6,23 +6,21 @@ import QuoteView from './quoteView.js';
 import TitleView from './titleView.js';
 import '../css/style.css';
 
-const Templates = [<ImageList/>, <ImageView/>, <ListView/>, <QuoteView/>, <TitleView/>]
-
 class App extends Component{
 	constructor(props) {
 		super(props);
-		this.state = {'template': Templates[4], 'theme': 'dark'};
 	}
 
 	render() {
+		let theme = this.props.params.theme;
 		let bgTheme = 'dark';
-		if (this.state['theme'] == 'dark' || this.state['theme'] == 'blue' || this.state['theme'] == 'black'){
+		if (theme == 'dark' || theme == 'blue' || theme == 'black'){
 			bgTheme = 'light'
 		}
 		return (
 			<div className={'MainApp ' + bgTheme}>
-				<div className={'SlideView ' + this.state['theme']}>
-					<div className={'SlideContent ' + this.state['theme']}>
+				<div className={'SlideView ' + theme}>
+					<div className={'SlideContent ' + theme}>
 						{this.props.children}
 					</div>
 				</div>
