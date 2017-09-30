@@ -46,7 +46,6 @@ class ImageListStore extends EventEmitter{
 	}
 
 	handleActions(action){
-		// console.log('ImageListStore received an action', action)
 		switch(action.type){
 			case 'CREATE_TITLE':{
 				this.createTitle(action.content.title)
@@ -73,5 +72,4 @@ class ImageListStore extends EventEmitter{
 
 const imageListStore = new ImageListStore;
 dispatcher.register(imageListStore.handleActions.bind(imageListStore))
-window.dispatcher = dispatcher
 export default imageListStore;
