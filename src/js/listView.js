@@ -17,6 +17,8 @@ class ListView extends Component{
 		})
 	}
 	renderList() {
+		var set = new Set(this.state.content.items);
+		this.state.current.items = Array.from(set);
 		return this.state.content.items.map((item, i) => (
 		    <li key={i} name={item}>{item}</li>
 		  ));

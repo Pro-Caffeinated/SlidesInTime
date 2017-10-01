@@ -34,22 +34,25 @@ class App extends Component{
 
 			Actions.createTitle({title: payload})
 			this.firstSpeech = false
-		}else{
+		}
+		else{
 			Actions.createSubTitle({subTitle: payload})
 			Actions.updateList({item: payload})
 			Actions.createQuote({quote: payload})
 		}
 	}
+
 	updateTemplate(payload) {
-		if(payload=="next"){
+		if(payload=='next'){
 			Actions.clearContent()
 			this.firstSpeech = true;
 		}
 	}
+
 	updateSrc(payload) {
-		console.log(payload)
-	    Actions.createImage({src: payload})
+	    Actions.createImage({src: payload});
 	}
+	
 	render() {
 		let theme = this.props.params.theme;
 		let bgTheme = 'dark';

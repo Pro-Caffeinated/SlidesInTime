@@ -50,7 +50,7 @@ const encoding = 'LINEAR16';
 const sampleRateHertz = 16000;
 
 // The BCP-47 language code to use, e.g. 'en-US'
-const languageCode = 'en-US';
+const languageCode = 'en-IN';
 
 const request = {
   config: {
@@ -63,8 +63,10 @@ const request = {
 
 // Create a recognize stream
 
+var recognizeStream = null;
+
 function speechRec(){
-  const recognizeStream = speech.streamingRecognize(request)
+  recognizeStream = speech.streamingRecognize(request)
       .on('error', console.log)
       .on('data', (data) => display(data.results[0]));
     // Start recording and send the microphone input to the Speech API
@@ -108,7 +110,6 @@ function display(log) {
                 }
                 else {
                   so.emit('template', response.result.fulfillment.speech);
-                  so.emit('speech', response.result.parameters.object);
                 }
                 if (body){
                   src = body.value[0].contentUrl;
@@ -143,6 +144,7 @@ function display(log) {
 
 function timeout() {
   setTimeout(function () {
+    recognizeStream = null;
     speechRec()
     timeout();
   }, 50000);
