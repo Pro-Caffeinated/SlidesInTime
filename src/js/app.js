@@ -14,6 +14,9 @@ import * as Actions from '../actions';
 class App extends Component{
 	constructor(props) {
 		super(props);
+		this.oldSpeechPayload = ""
+		this.oldTempPayload = ""
+		this.oldImgPayload = ""
 		var socket = props.route.ioSocket
 		this.firstSpeech = true
 		socket.on('speech', (payload) => {   
@@ -29,6 +32,8 @@ class App extends Component{
 	}
 
 	updateSpeech(payload) {
+		if(this.oldSpeechPayload ==payload)
+			return;
 		console.log(payload)
 		if(this.firstSpeech == true){
 
@@ -37,8 +42,9 @@ class App extends Component{
 		}else{
 			Actions.createSubTitle({subTitle: payload})
 			Actions.updateList({item: payload})
-			Actions.createQuote({quote: payload})
 		}
+		Actions.createQuote({quote: payload})	
+		this.oldSpeechPayload = payload
 	}
 	updateTemplate(payload) {
 		if(payload=="next"){
@@ -47,8 +53,11 @@ class App extends Component{
 		}
 	}
 	updateSrc(payload) {
+		if(this.oldImgPayload ==payload)
+			return;
 		console.log(payload)
 	    Actions.createImage({src: payload})
+	   	this.oldImgPayload ==payload
 	}
 	render() {
 		let theme = this.props.params.theme;

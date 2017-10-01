@@ -17,6 +17,8 @@ socket.on('template', (payload) => {
  	updateTemplate(payload);
 });
 function updateTemplate(payload) {
+	if(lastPayload == payload)
+		return;
 	var location = window.location.href;
 	console.log(payload, location)
 	var first = location.indexOf("slides")-1;
@@ -51,7 +53,7 @@ function updateTemplate(payload) {
 
 		console.log(newPath)
 		// browserHistory.push("/slides/dark/quoteView")
-		browserHistory.replace(newPath)
+		browserHistory.push(newPath)
 	}
 	lastPayload=payload
 }

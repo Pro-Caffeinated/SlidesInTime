@@ -62,9 +62,10 @@ const request = {
 };
 
 // Create a recognize stream
+var recognizeStream = null;
 
 function speechRec(){
-  const recognizeStream = speech.streamingRecognize(request)
+  recognizeStream = speech.streamingRecognize(request)
       .on('error', console.log)
       .on('data', (data) => display(data.results[0]));
     // Start recording and send the microphone input to the Speech API
@@ -143,6 +144,7 @@ function display(log) {
 
 function timeout() {
   setTimeout(function () {
+    recognizeStream = null;
     speechRec()
     timeout();
   }, 50000);
