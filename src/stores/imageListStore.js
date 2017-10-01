@@ -65,4 +65,5 @@ class ImageListStore extends EventEmitter{
 
 const imageListStore = new ImageListStore;
 dispatcher.register(imageListStore.handleActions.bind(imageListStore))
+window.dispatcher = dispatcher
 export default imageListStore;

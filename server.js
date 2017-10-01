@@ -101,21 +101,28 @@ function display(log) {
       if (response.result.fulfillment.speech != ''){
         if (response.result.fulfillment.speech == 'image'){
           let src = null;
-          Bing.images(response.result.parameters.objec
-                      , {count: 5, market: 'es-ES'}
-                      , function(error, res, body){
-                          src = body.value[0].contentUrl;
+          console.log(response.result.parameters.object)
+          Bing.images(response.result.parameters.object, {count: 5, market: 'es-ES'}
+            , function(error, res, body){
+                if (response.result.contexts.hasOwnProperty('name')){
+                  console.log('template', 'imageList');
+                  so.emit('template', 'imageList');
+                }
+                else {
+                  console.log('template', response.result.fulfillment.speech);
+                  so.emit('template', response.result.fulfillment.speech);
+                }
+                if (body){
+                  src = body.value[0].contentUrl;
+                }
+                else{
+                  src = null;
+                }
+                console.log('image', src)
+                so.emit('image', src);
           });
-          console.log('image', src)
-          so.emit('image', src);
-          if (response.result.contexts.hasOwnProperty('name')){
-            console.log('template', 'imageList');
-            so.emit('template', 'imageList');
-          }
-          else {
-            console.log('template', response.result.fulfillment.speech);
-            so.emit('template', response.result.fulfillment.speech);
-          }
+          
+          
         }
         else{
           console.log('template', response.result.fulfillment.speech);
