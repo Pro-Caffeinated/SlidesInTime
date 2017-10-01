@@ -101,16 +101,14 @@ function display(log) {
       if (response.result.fulfillment.speech != ''){
         if (response.result.fulfillment.speech == 'image'){
           let src = null;
-          console.log(response.result.parameters.object)
           Bing.images(response.result.parameters.object, {count: 1, market: 'es-ES'}
             , function(error, res, body){
                 if (response.result.contexts.hasOwnProperty('name')){
-                  console.log('template', 'imageList');
                   so.emit('template', 'imageList');
                 }
                 else {
-                  console.log('template', response.result.fulfillment.speech);
                   so.emit('template', response.result.fulfillment.speech);
+                  so.emit('speech', response.result.parameters.object);
                 }
                 if (body){
                   src = body.value[0].contentUrl;
@@ -118,19 +116,16 @@ function display(log) {
                 else{
                   src = null;
                 }
-                console.log('image', src)
                 so.emit('image', src);
           });
           
           
         }
         else{
-          console.log('template', response.result.fulfillment.speech);
           so.emit('template', response.result.fulfillment.speech);
         }
       }
       else {
-          console.log('speech', log.alternatives[0].transcript);
           so.emit('speech', log.alternatives[0].transcript);
       }
     });
