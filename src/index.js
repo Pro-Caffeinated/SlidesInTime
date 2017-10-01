@@ -10,7 +10,7 @@ import QuoteView from './js/quoteView';
 import TitleView from './js/titleView';
 
 const root = document.getElementById('root')
-
+var lastPayload = ""
 import socketIOClient from 'socket.io-client';
 const socket = socketIOClient('http://localhost:8000');
 socket.on('template', (payload) => {   
@@ -25,7 +25,14 @@ function updateTemplate(payload) {
 	var ext = payload
 	switch(payload){
 		case 'image':{
-			ext = "imageView"
+			var lastItem = location.substring(last)
+			console.log(lastItem)
+			if(lastItem == "listView" && lastPayload != "next"){
+				ext = "imageList"
+			}
+			else{
+				ext = "imageView"
+			}
 			break;
 		}
 			
@@ -46,6 +53,7 @@ function updateTemplate(payload) {
 		// browserHistory.push("/slides/dark/quoteView")
 		browserHistory.replace(newPath)
 	}
+	lastPayload=payload
 }
 ReactDOM.render(
 	<Router history={browserHistory}>

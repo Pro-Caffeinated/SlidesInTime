@@ -37,6 +37,7 @@ class App extends Component{
 		}else{
 			Actions.createSubTitle({subTitle: payload})
 			Actions.updateList({item: payload})
+			Actions.createQuote({quote: payload})
 		}
 	}
 	updateTemplate(payload) {

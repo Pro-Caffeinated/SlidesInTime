@@ -102,7 +102,7 @@ function display(log) {
         if (response.result.fulfillment.speech == 'image'){
           let src = null;
           console.log(response.result.parameters.object)
-          Bing.images(response.result.parameters.object, {count: 5, market: 'es-ES'}
+          Bing.images(response.result.parameters.object, {count: 1, market: 'es-ES'}
             , function(error, res, body){
                 if (response.result.contexts.hasOwnProperty('name')){
                   console.log('template', 'imageList');
