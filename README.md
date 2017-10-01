@@ -1,8 +1,8 @@
-# SUTD_WTH
+# Slides In Time
 ## TO DO:
 * [x] Templates x 5
 * [x] Cards.css
-* [ ] NLP Parse - API.ai
+* [x] NLP Parse - API.ai
 * [x] Google Cloud Speech API
-* [ ] Google Custom Search API
+* [x] Bing Custom Search API
 * [x] Dark/Light Theme
