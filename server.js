@@ -102,17 +102,16 @@ function display(log) {
       if (response.result.fulfillment.speech != ''){
         if (response.result.fulfillment.speech == 'image'){
           let src = null;
-          Bing.images(response.result.parameters.object, {count: 1, market: 'es-ES'}
+          Bing.images(response.result.parameters.object, {count: 1, market: 'es-US'}
             , function(error, res, body){
                 if (response.result.contexts.hasOwnProperty('name')){
                   so.emit('template', 'imageList');
                 }
                 else {
                   so.emit('template', response.result.fulfillment.speech);
-                  so.emit('speech', response.result.parameters.object);
                 }
                 if (body){
-                  src = body.value[0].contentUrl;
+                  src = body.value[0].thumbnailUrl;
                 }
                 else{
                   src = null;

@@ -92,7 +92,7 @@ h3 {
 }
 
 .ImageView > img {
-	max-width: 60%;
+	max-width: 40%;
 }
 
 .ListView > ul > li {
@@ -124,7 +124,7 @@ h3 {
 }
 
 .ImageList > .TwoColumn > .ColumnRight > img {
-	max-width: 90%;
+	max-width: 50%;
 }
 
 .dark{
