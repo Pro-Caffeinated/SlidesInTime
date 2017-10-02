@@ -1,4 +1,5 @@
-# Slides In Time
+<img src="slidesInTime.png" height="120"/>
+
 ***Disclaimer*** *- This repo is was developed during SUTD What The Hack 2017 hackathon. It may or may not be maintained.*   
 
 🎤 A web app that can build slides for you as you speak. No need to spend hours on formatting and deciding the content of your powerpoint. Just show up and speak and leave the rest to it.
