@@ -66,7 +66,7 @@ class Start extends Component{
 								</ButtonGroup>
 							</div>
 							<br/><br/>
-							<LinkContainer to={'/slides/' + this.state.theme}>
+							<LinkContainer to={'/slides/' + this.state.theme + '/'}>
 							  <Button bsStyle={this.state.submit}>Start</Button>
 							</LinkContainer>
 						</div>

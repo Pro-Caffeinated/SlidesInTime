@@ -34,12 +34,12 @@ class TitleViewStore extends EventEmitter{
 	handleActions(action){
 		switch(action.type){
 			case 'CREATE_TITLE':{
-				this.createTitle(action.content.title)
+				this.createTitle(action.content)
 				break;
 			}
 
 			case 'CREATE_SUBTITLE':{
-				this.createSubTitle(action.content.subTitle)
+				this.createSubTitle(action.content)
 				break;
 			}
 

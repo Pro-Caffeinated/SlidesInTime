@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 
-import dispatcher from "../dispatcher"
+import dispatcher from '../dispatcher'
 
 class ImageViewStore extends EventEmitter{
 	constructor(){
@@ -14,34 +14,34 @@ class ImageViewStore extends EventEmitter{
 
 	createTitle(title){
 		this.content.title = title;
-		this.emit("change")
+		this.emit('change')
 	}
 
 	createImage(src){
 		this.content.src = src
-		this.emit("change")
+		this.emit('change')
 	}
 
 	clearContent(){
-		this.content.title = "";
+		this.content.title = '';
 		this.content.items = []
 		this.content.src = null
-		this.emit("change")
+		this.emit('change')
 	}
 
 	handleActions(action){
 		switch(action.type){
-			case "CREATE_TITLE":{
-				this.createTitle(action.content.title)
+			case 'CREATE_TITLE':{
+				this.createTitle(action.content)
 				break;
 			}
 			
-			case "CREATE_IMAGE":{
-				this.createImage(action.content.src)
+			case 'CREATE_IMAGE':{
+				this.createImage(action.content)
 				break;
 			}
 
-			case "CLEAR_CONTENT":{
+			case 'CLEAR_CONTENT':{
 				this.clearContent()
 				break;
 			}

@@ -27,7 +27,7 @@ class QuoteViewStore extends EventEmitter{
 	handleActions(action){
 		switch(action.type){
 			case 'CREATE_QUOTE':{
-				this.createQuote(action.content.quote)
+				this.createQuote(action.content)
 				break;
 			}
 
