@@ -26,8 +26,12 @@ app.listen(3000, function(err) {
   console.log('Listening at http://localhost:3000/');
 });
 
-/***********************Google Image API Setup*******************************/
-var imageSearch = require('node-google-image-search');
+/********************** Bing API Setup ******************************/
+
+var Bing = require('node-bing-api')({ accKey: process.env.BING_SEARCH_KEY });
+var util = require('util'),
+  Bing = require('node-bing-api')({ accKey: process.env.BING_SEARCH_KEY }),
+  searchBing = util.promisify(Bing.web.bind(Bing));
 
 /********************** Cloud Speech API Setup ******************************/
 
@@ -88,32 +92,34 @@ var so = null;
 
 /*******************************************************************/
 
-function imageCallback(results, response){
-	if (response.result.contexts.hasOwnProperty('name')){
-	  so.emit('template', 'imageList');
-	}
-	else {
-	  so.emit('template', response.result.fulfillment.speech);
-	}
-	if (body){
-	  src = response[0].link;
-	}
-	else{
-	  src = null;
-	}
-	so.emit('image', src);
-}
-
 function display(log) {
-  try{
+  try{  	
     var request = app.textRequest(log.alternatives[0].transcript, {
       sessionId: Math.floor(Math.random()*10e5)
     });
+     
     request.on('response', function(response) {
       if (response.result.fulfillment.speech != ''){
         if (response.result.fulfillment.speech == 'image'){
           let src = null;
-          var results = imageSearch(response.result.parameters.object, imageCallback, 0, 1, response);
+          Bing.images(response.result.parameters.object, {count: 1, market: 'es-US'}
+            , function(error, res, body){
+                if (response.result.contexts.hasOwnProperty('name')){
+                  so.emit('template', 'imageList');
+                }
+                else {
+                  so.emit('template', response.result.fulfillment.speech);
+                }
+                if (body){
+                  src = body.value[0].thumbnailUrl;
+                }
+                else{
+                  src = null;
+                }
+                so.emit('image', src);
+          });
+          
+          
         }
         else{
           so.emit('template', response.result.fulfillment.speech);
@@ -123,11 +129,11 @@ function display(log) {
           so.emit('speech', log.alternatives[0].transcript);
       }
     });
-
+     
     request.on('error', function(error) {
         console.log(error);
     });
-
+     
     request.end();
   }
   catch(e) {
