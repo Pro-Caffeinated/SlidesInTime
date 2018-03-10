@@ -46,7 +46,7 @@ const encoding = 'LINEAR16';
 const sampleRateHertz = 16000;
 
 // The BCP-47 language code to use, e.g. 'en-US'
-const languageCode = 'en-US';
+const languageCode = 'en-IN';
 
 const request = {
   config: {
@@ -89,19 +89,20 @@ var so = null;
 /*******************************************************************/
 
 function imageCallback(results, response){
-	if (response.result.contexts.hasOwnProperty('name')){
-	  so.emit('template', 'imageList');
-	}
-	else {
-	  so.emit('template', response.result.fulfillment.speech);
-	}
-	if (body){
-	  src = response[0].link;
-	}
-	else{
-	  src = null;
-	}
-	so.emit('image', src);
+  if (response.result.contexts.hasOwnProperty('name')){
+    so.emit('template', 'imageList');
+  }
+  else {
+    so.emit('template', response.result.fulfillment.speech);
+  }
+  if (results){
+    console.log("IMAGECALLBACK",results)
+    src = results[0].link;
+  }
+  else{
+    src = null;
+  }
+  so.emit('image', src);
 }
 
 function display(log) {
@@ -113,6 +114,7 @@ function display(log) {
       if (response.result.fulfillment.speech != ''){
         if (response.result.fulfillment.speech == 'image'){
           let src = null;
+          console.log(response.result.parameters.object)
           var results = imageSearch(response.result.parameters.object, imageCallback, 0, 1, response);
         }
         else{
