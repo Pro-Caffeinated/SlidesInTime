@@ -15,6 +15,8 @@ class QuoteViewStore extends EventEmitter{
 	}
 
 	createQuote(quote){
+		quote = quote.charAt(0).toUpperCase() + quote.substr(1);
+		console.log(quote);
 		this.content.quote = quote;
 		this.emit('change');
 	}

@@ -13,6 +13,8 @@ class ImageViewStore extends EventEmitter{
 	}
 
 	createTitle(title){
+		title = title.charAt(0).toUpperCase() + title.substr(1);
+		console.log(title);
 		this.content.title = title;
 		this.emit('change')
 	}

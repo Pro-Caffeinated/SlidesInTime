@@ -14,6 +14,8 @@ class ListViewStore extends EventEmitter{
 	}
 
 	createContent(title,list,src){
+		title = title.charAt(0).toUpperCase() + title.substr(1);
+		console.log(title);
 		this.content.title = title;
 		this.content.items = list
 		this.content.src = src
@@ -21,11 +23,15 @@ class ListViewStore extends EventEmitter{
 	}
 
 	createTitle(title){
+		title = title.charAt(0).toUpperCase() + title.substr(1);
+		console.log(title);
 		this.content.title = title;
 		this.emit('change')
 	}
 
 	updateList(item){
+		item = item.charAt(0).toUpperCase() + item.substr(1);
+		console.log(item);
 		this.content.items.push(item)
 		this.emit('change')
 	}

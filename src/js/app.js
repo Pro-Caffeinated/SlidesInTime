@@ -19,7 +19,7 @@ class App extends Component{
 		this.oldImgPayload = ""
 		var socket = props.route.ioSocket
 		this.firstSpeech = true
-		socket.on('speech', (payload) => {   
+		socket.on('speech', (payload) => {
 	      this.updateSpeech(payload);
 	    });
 	    socket.on('template', (payload) => {   
@@ -32,9 +32,9 @@ class App extends Component{
 	}
 
 	updateSpeech(payload) {
-		if(this.oldSpeechPayload ==payload)
+		
+		if(this.oldSpeechPayload == payload)
 			return;
-		console.log(payload)
 		if(this.firstSpeech == true){
 
 			Actions.createTitle({title: payload})
@@ -55,7 +55,6 @@ class App extends Component{
 	updateSrc(payload) {
 		if(this.oldImgPayload ==payload)
 			return;
-		console.log(payload)
 	    Actions.createImage({src: payload})
 	   	this.oldImgPayload ==payload
 	}

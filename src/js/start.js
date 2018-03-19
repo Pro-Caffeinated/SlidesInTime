@@ -17,7 +17,7 @@ class Start extends Component{
 	changeTheme(name){
 		this.setState({
 			theme: name,
-			submit: 'default'
+			submit: 'primary'
 		});
 		if (name == 'light'){
 			this.setState({
@@ -36,7 +36,7 @@ class Start extends Component{
 		}
 		else if (name == 'blue'){
 			this.setState({
-				submit: 'default'
+				submit: 'success'
 			});
 		}
 	}
@@ -52,8 +52,8 @@ class Start extends Component{
 				<div className={'SlideView ' + this.state.theme}>
 					<div className={'SlideContent dark' + this.state.theme}>
 						<div className='TitleView'>
-							<h1>Slides In Time</h1>
-							<h3>Literally reading off the slides</h3>
+							<h1>Sliders</h1>
+							<h3>Make slides with ease</h3>
 							<br/>
 							<h5>Select Theme</h5>
 							<div className='themeSelect'>

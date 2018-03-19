@@ -142,7 +142,7 @@ function timeout() {
     recognizeStream = null;
     speechRec()
     timeout();
-  }, 50000);
+  }, 60000);
 }
 
 

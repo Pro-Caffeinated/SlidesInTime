@@ -16,11 +16,15 @@ class TitleViewStore extends EventEmitter{
 	}
 
 	createTitle(title){
+		title = title.charAt(0).toUpperCase() + title.substr(1);
+		console.log(title);
 		this.content.title = title;
 		this.emit('change');
 	}
 
 	createSubTitle(subTitle){
+		subTitle = subTitle.charAt(0).toUpperCase() + subTitle.substr(1);
+		console.log(subTitle);
 		this.content.subTitle = subTitle;
 		this.emit('change');
 	}
